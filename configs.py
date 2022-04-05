@@ -9,7 +9,7 @@ logger = logging.getLogger(__name__)
 
 def add_args(parser):
     parser.add_argument("--task", type=str, required=True,
-                        choices=['summarize', 'concode', 'translate', 'refine', 'defect', 'clone', 'multi_task'])
+                        choices=['summarize', 'concode', 'translate', 'refine', 'defect', 'clone', 'multi_task', 'logic'])
     parser.add_argument("--sub_task", type=str, default='')
     parser.add_argument("--lang", type=str, default='')
     parser.add_argument("--eval_task", type=str, default='')
@@ -107,6 +107,8 @@ def add_args(parser):
         args.lang = 'c'
     elif args.task == 'translate':
         args.lang = 'c_sharp' if args.sub_task == 'java-cs' else 'java'
+    elif args.task == 'logic':
+        args.lang = 'python'
     return args
 
 
